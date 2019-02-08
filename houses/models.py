@@ -3,14 +3,19 @@ from pycountry import countries
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-# Create your models here.
+
 COUNTRY_CHOICES = sorted((country.name, country.name) for country in countries)
+# Create your models here.
 
 
 class House(models.Model):
-    name = models.CharField(max_length=120, blank=True, default='')
+    """
+    This model describes a house to be rent.
+    """
+    name = models.CharField(max_length=100, blank=True, default='')
     city = models.CharField(max_length=100, blank=False, default='Minsk')
     country = models.CharField(choices=COUNTRY_CHOICES, default='Belarus', max_length=100)
+
     number_of_rooms = models.IntegerField(blank=False, default=1, validators=[MaxValueValidator(100),
                                                                               MinValueValidator(1)])
 
@@ -25,8 +30,3 @@ class House(models.Model):
 
     class Meta:
         ordering = ('created',)
-
-    def save(self, *args, **kwargs):
-        """
-        """
-        super(House, self).save(*args, **kwargs)
