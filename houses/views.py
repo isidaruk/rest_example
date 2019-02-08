@@ -4,7 +4,7 @@ from houses.serializers import HouseSerializer
 from rest_framework import generics
 
 from django.contrib.auth.models import User
-from snippets.serializers import UserSerializer
+from houses.serializers import UserSerializer
 
 
 class HouseList(generics.ListCreateAPIView):
