@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'houses.apps.HousesConfig',
-    'rest_framework'
+    'rest_framework',
+
+    'rest_framework_swagger'
 ]
 
 MIDDLEWARE = [
